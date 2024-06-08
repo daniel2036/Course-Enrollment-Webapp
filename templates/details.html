@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"
+        meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='details.css') }}">
+
+        <title>Home</title>
+    </head>
+    <body>
+        <h1 align ="center">Student Details</h1>
+        <table id = "personal-details">
+            <tr>
+                <th>Roll Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr>
+                <td>{{s.roll_number}}</td>
+                <td>{{s.first_name}}</td>
+                <td>{{s.last_name}}</td>
+            </tr>
+        </table>
+        <h1 align="center">Enrollment list</h1>
+        <table id = "enroll-table">
+            <tr>
+                <th>S. No.</th>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Course Description</th>
+                <th>Actions</th>
+            </tr>
+            {% for i in list %}
+            <tr>
+                <td>{{i.course_id}}</td>
+                <td>{{i.course_code}}</td>
+                <td>{{i.course_name}}</td>
+                <td>{{i.course_description}}</td>
+                <td><a href="/student/{{i.student_id}}/withdraw/{{i.course_id}}">Withdraw</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/">Go Back</a>
+    </body>
+</html>

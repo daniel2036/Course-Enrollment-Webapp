@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"
+        meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='courses.css') }}">
+
+    </head>
+    <body>
+        {% if (list|length)!=0 %}
+        <table id = "all-course">    
+            <tr>
+                <th>SNo</th>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Course Description</th>
+                <th>Actions</th>
+            </tr>            
+        
+            {% for i in list  %}      
+             <tr>      
+                <td><a href="/course/{{i.course_id}}">{{i.course_code}}</a></td>
+                <td>{{i.course_name}}</td>
+                <td>{{i.course_description}}</td>
+                <td>
+                    <a href="/course/{{i.course_id}}/update" type="button">Update</a>
+                </td>
+                <td>
+                    <a href="/course/{{i.course_id}}/delete" type="button">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h2>Course List</h2>
+        <p>No courses found.Add the courses now!</p>
+        {% endif %}
+        <a href="/course/create">+Add Course</a>
+        <a href="/">Go to students</a>
+    </body>
+</html>
