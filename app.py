@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import io
 import base64
 
-
 app=Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///database.sqlite3"
@@ -15,6 +14,11 @@ app.app_context().push()
 
 @app.route('/')
 def home():
+    return render_template('home.html')
+
+
+@app.route('/students')
+def students():
     s=Student.query.all()
     return render_template('index.html',list=s)
 

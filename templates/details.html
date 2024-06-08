@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8"
-        meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='details.css') }}">
+{% extends "layout.html" %}
+{% block title %}
+  Enrollment
+{% endblock %} 
 
-        <title>Home</title>
-    </head>
-    <body>
+{% block content %}
+ 
         <h1 align ="center">Student Details</h1>
         <table id = "personal-details">
             <tr>
@@ -39,7 +36,6 @@
                 <td><a href="/student/{{i.student_id}}/withdraw/{{i.course_id}}">Withdraw</a></td>
             </tr>
             {% endfor %}
-        </table>
-        <a href="/">Go Back</a>
-    </body>
-</html>
+        </table>       
+ 
+{% endblock %}
