@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8"
-        meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='courses.css') }}">
+{% extends "layout.html" %}
+{% block title %}
 
-    </head>
-    <body>
+{% endblock %} 
+
+{% block content %}
         {% if (list|length)!=0 %}
         <table id = "all-course">    
             <tr>
@@ -27,7 +23,7 @@
                     <a href="/course/{{i.course_id}}/update" type="button">Update</a>
                 </td>
                 <td>
-                    <a href="/course/{{i.course_id}}/delete" type="button">Delete</a>
+                    <a href="/course/{{i.course_id}}/delete" type="button">✖ Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -36,7 +32,5 @@
         <h2>Course List</h2>
         <p>No courses found.Add the courses now!</p>
         {% endif %}
-        <a href="/course/create">+Add Course</a>
-        <a href="/">Go to students</a>
-    </body>
-</html>
+        <a href="/course/create">➕Add Course</a>        
+{% endblock %}
