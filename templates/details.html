@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block title %}
-  Enrollment
 {% endblock %} 
 
 {% block content %}
@@ -23,7 +22,7 @@
         <h1 align="center">Enrollment list</h1>
         <table id = "enroll-table">
             <tr>
-                <th>S. No.</th>
+                <th></th>
                 <th>Course Code</th>
                 <th>Course Name</th>
                 <th>Course Description</th>
@@ -31,7 +30,7 @@
             </tr>
             {% for i in list %}
             <tr>
-                <td>{{i.course_id}}</td>
+                <td>{{loop.index}}</td>
                 <td>{{i.course_code}}</td>
                 <td>{{i.course_name}}</td>
                 <td>{{i.course_description}}</td>
