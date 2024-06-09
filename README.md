@@ -1,6 +1,6 @@
 # Enrollment Web App ReadMe
 
-1. Download project introduction slides and ER Diagram at: [courses app.pdf](https://github.com/user-attachments/files/15750704/courses.app.pdf)
+1. Optional download project introduction slides and ER Diagram to see overview at: [courses app.pdf](https://github.com/user-attachments/files/15750704/courses.app.pdf)
 2. To run the web app, first download repository zip from Github. Unzip the download and then open project folder in VS Code.
 3. Make sure Python and Flask are installed.
 4. Open new terminal in VS Code and type in 'flask run'
