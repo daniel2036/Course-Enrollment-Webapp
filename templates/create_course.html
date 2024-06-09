@@ -4,19 +4,19 @@
 {% endblock %} 
 
 {% block content %}
-
+<h1>Add Course</h1>
     <form action="/course/create" method="POST" id="create-course-form">
         <div>
-            <label>Course Code:</label>
+            <label>Code:</label>
             <input type="text" name="code" required />
         </div>
             
         <div>
-            <label>Course Name:</label>
+            <label>Name:</label>
             <input type="text" name="c_name" required />
         </div>
         <div>
-            <label>Course Description:</label>
+            <label>Description:</label>
             <input type="text" name="desc" />
         </div>
         <div>

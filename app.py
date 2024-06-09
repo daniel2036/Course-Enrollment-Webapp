@@ -14,13 +14,15 @@ app.app_context().push()
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    s = Enrollments.query.all()
+    return render_template('home.html',list=s)
+    # return render_template('home.html')
 
 
 @app.route('/students')
 def students():
     s=Student.query.all()
-    return render_template('index.html',list=s)
+    return render_template('student.html',list=s)
 
 @app.route('/courses')
 def courses():
@@ -35,7 +37,7 @@ def delete(student_id):
     for i in enrol:
         db.session.delete(i)
     db.session.commit()
-    return redirect('/')
+    return redirect('/students')
 
 
 
@@ -45,6 +47,7 @@ def update(student_id):
         fname = request.form.get('f_name')
         lname = request.form.get('l_name')
         courses = request.form.getlist('courses')
+        email = request.form.get('email')
 
         student = Student.query.get(student_id)
         if student:
@@ -52,6 +55,8 @@ def update(student_id):
                 student.first_name = fname
             if lname != 'current_l_name':
                 student.last_name = lname
+            if email != 'current_email':
+                student.email = email
 
             # Remove existing enrollments
             Enrollments.query.filter_by(estudent_id=student_id).delete()
@@ -62,13 +67,13 @@ def update(student_id):
                 db.session.add(e)
 
             db.session.commit()
-            return redirect('/')
+            return redirect('/students')
 
     else:
         student = Student.query.get(student_id)
         if student:
             courses = Course.query.all()
-            return render_template('update.html', student=student, courses=courses)
+            return render_template('student_update.html', student=student, courses=courses)
 
 @app.route('/student/<int:student_id>')
 def details(student_id):
@@ -97,6 +102,7 @@ def course_details(course_id):
 def add_student():
     if request.method=="POST":
         roll=request.form.get('roll')
+        email=request.form.get('email')
         fname=request.form.get('f_name')
         lname=request.form.get('l_name')
         courses=request.form.getlist('courses')
@@ -104,7 +110,7 @@ def add_student():
         for i in r:
             if i.roll_number==roll:
                 return render_template('exist.html')
-        s=Student(roll_number=roll,first_name=fname,last_name=lname)
+        s=Student(roll_number=roll,email=email,first_name=fname,last_name=lname)
         db.session.add(s)
         db.session.commit()
         q=Student.query.filter_by(roll_number=roll).first()
@@ -112,7 +118,7 @@ def add_student():
             e=Enrollments(estudent_id=q.student_id,ecourse_id=c)
             db.session.add(e)
         db.session.commit()
-        return redirect('/')
+        return redirect('/students')
   
     else:
         courses = Course.query.all()
@@ -167,7 +173,7 @@ def withdraw(student_id, course_id):
     for i in enrol:
         db.session.delete(i)
     db.session.commit()
-    return redirect('/')
+    return redirect('/students')
 
 @app.route('/course/<int:course_id>/delete',methods=['GET','POST'])
 def course_delete(course_id):
@@ -218,6 +224,7 @@ def dashboard():
     subjects_pie_chart = generate_subjects_pie_chart()
     
     return render_template('dashboard.html', subjects_pie_chart=subjects_pie_chart)
+
 
 if __name__=='__main__':
     app.run()

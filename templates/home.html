@@ -1,7 +1,27 @@
 {% extends "layout.html" %}
-{% block title %}
 
-{% endblock %}
 {% block content %}
-<h1>Welcome to  Student Course Enrollment Web Site</h1>
+<h1>Welcome to Student Course Enrollment Web Site</h1>
+<table id="all-enrollments">
+    <tr>
+        <th></th>
+        <th>Roll Number</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Course Code</th>
+        <th>Course Description</th>
+        <th></th>
+    </tr>
+    {% for i in list %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{i.students.roll_number}}</td>
+        <td>{{i.students.first_name}}</td>
+        <td>{{i.students.last_name}}</td>
+        <td>{{i.courses.course_code}}</td>
+        <td>{{i.courses.course_description}}</td>
+    </tr>
+    {% endfor %}
+
+
 {% endblock %}

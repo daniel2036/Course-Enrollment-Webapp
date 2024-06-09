@@ -7,15 +7,17 @@
         {% if (list|length)!=0 %}
         <table id = "all-course">    
             <tr>
-                <th>SNo</th>
-                <th>Course Code</th>
-                <th>Course Name</th>
-                <th>Course Description</th>
-                <th>Actions</th>
+                <th></th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
             </tr>            
         
             {% for i in list  %}      
              <tr>      
+                <td>{{ loop.index }}</td>
                 <td><a href="/course/{{i.course_id}}">{{i.course_code}}</a></td>
                 <td>{{i.course_name}}</td>
                 <td>{{i.course_description}}</td>

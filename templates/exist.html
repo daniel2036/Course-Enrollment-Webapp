@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8"
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='exists.css') }}">
+{% extends "layout.html" %}
+{% block title %}
 
-        <title>Exists</title>
-    </head>
-    <body>
-        <p>Student already exists.Please use different Roll Number!</p>
-        <a href="/">Go Home</a>
-    </body>
+{% endblock %}
+
+{% block content %}
+<p>Student already exists.Please use different Roll Number!</p>
+
+{% endblock %}

@@ -85,7 +85,7 @@ a:visited:hover {
 
 /* Create Course */
 form {
-    max-width: 400px;
+    max-width:640px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -94,17 +94,33 @@ form {
 }
 
 form div {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-label {
-    display: block;
+ul.no-bullets {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+li.decimal {
+    list-style-type: decimal;
+}
+
+label {    
     font-weight: bold;
     margin-bottom: 5px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-input[type="text"] {
-    width: 100%;
+input[type="checkbox"]
+{
+    vertical-align:middle;
+}
+
+input[type="text"] , input[type="email"]{
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
